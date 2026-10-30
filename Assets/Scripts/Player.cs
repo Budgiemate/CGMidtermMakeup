@@ -48,7 +48,7 @@ public class Player : MonoBehaviour
         IEnumerator Attack()
         {
             //spawn punch block
-            GameObject punch = Instantiate(punchBlock, transform.position + Vector3.right * 2, transform.rotation);
+            GameObject punch = Instantiate(punchBlock, transform.position + Vector3.right * 2, Quaternion.identity);
             float lightNum = enemy.GetComponent<Renderer>().material.GetFloat("_LightMode");
             enemy.GetComponent<Renderer>().material.SetFloat("_LightMode", (lightNum + 1) % 3);
             isPunching = true;
