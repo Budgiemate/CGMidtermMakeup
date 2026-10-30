@@ -15,6 +15,7 @@ Shader "Custom/WorldReflect"
         _FresnelBoost ("Fresnel Boost", Range(0, 2)) = 1.0
         [HDR] _LavaColor ("hdr color", Color) = (1,1,1,1)
         _GlowPower("glow power", Float) = 1
+        _ScrollSpeed("Scroll", Float) = 1
     }
 
     SubShader
@@ -70,6 +71,7 @@ Shader "Custom/WorldReflect"
                 float  _FresnelBoost;
                 half4 _GlowColor;
                 half _GlowPower;
+                half _ScrollSpeed;
             CBUFFER_END
 
             Varyings vert (Attributes IN)
@@ -96,7 +98,7 @@ Shader "Custom/WorldReflect"
                 // to determine the object's base color?
 
                 half3 baseCol =
-                    SAMPLE_TEXTURE2D(_BaseMap, sampler_BaseMap, IN.uv).rgb
+                    SAMPLE_TEXTURE2D(_BaseMap, sampler_BaseMap, IN.uv+ _ScrollSpeed * _Time.y).rgb
                     * _BaseColor.rgb;
 
                 // Q6: What does GetWorldSpaceViewDir() calculate,
