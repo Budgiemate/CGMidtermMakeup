@@ -10,3 +10,9 @@ added moving tile shader to simulate lava flowing underneath the ground the play
 multi uv shader
 added multi uv shader to make a more detailed ground for the player to stand on since this material will be in the main view of the game and where the player is standing the most. The 2 textures i put on the water and the concrete make it look like cracked volcano which is what i am going for.
 
+light switch sahder
+added a shader that switches from ambinet to specular to diffuse lighting every time the player punches the enemy lights up in  different mode pulling the plyer's attention to the enemy that the punch attack should be used on.
+
+basic texture and color shader
+added a shader that the player character has that is a battletoad image overtop of blue making the player know what is the character within the scene by having a contrast object inside the scene.
+
