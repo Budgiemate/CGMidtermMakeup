@@ -5,6 +5,8 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private Rigidbody _rb;
     [SerializeField] private GameObject punchBlock;
+    [SerializeField] private GameObject enemy;
+    private bool isPunching = false;
 
     public float moveSpeed = 5.0f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -37,14 +39,23 @@ public class Player : MonoBehaviour
         //check for attack
         if (Input.GetKey(KeyCode.Space))
         {
-            StartCoroutine(Attack());
+            if (!isPunching)
+            {
+                StartCoroutine(Attack());
+            }
         }
 
         IEnumerator Attack()
         {
             //spawn punch block
-            GameObject punch = Instantiate(punchBlock, transform.position, transform.rotation);
+            GameObject punch = Instantiate(punchBlock, transform.position + Vector3.right * 2, transform.rotation);
+            float lightNum = enemy.GetComponent<Renderer>().material.GetFloat("_LightMode");
+            enemy.GetComponent<Renderer>().material.SetFloat("_LightMode", (lightNum + 1) % 3);
+            isPunching = true;
+            
             yield return new WaitForSeconds(0.5f);
+            
+            isPunching = false;
             Destroy(punch);
         }
     }
