@@ -16,3 +16,5 @@ added a shader that switches from ambinet to specular to diffuse lighting every 
 basic texture and color shader
 added a shader that the player character has that is a battletoad image overtop of blue making the player know what is the character within the scene by having a contrast object inside the scene.
 
+custom shader
+added a rim light shader to emphasize the players punch when used and to signify that this action could be useful for something.
